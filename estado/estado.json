@@ -3,39 +3,46 @@
  "offset": 160493729,
  "posts": {
   "2026-11-02-impressora-brother": {
-   "estado": "por_aprovar",
+   "estado": "aprovado",
    "versao": 1,
-   "enviado_para_aprovacao": 6
+   "enviado_para_aprovacao": 6,
+   "atualizado": "2026-10-31T17:51 (aprovado pelo Cristiano; registado pelo Claude)"
   },
   "2026-11-03-embaixadores": {
-   "estado": "por_aprovar",
+   "estado": "aprovado",
    "versao": 1,
-   "enviado_para_aprovacao": 7
+   "enviado_para_aprovacao": 7,
+   "atualizado": "2026-10-31T17:51 (aprovado pelo Cristiano; registado pelo Claude)"
   },
   "2026-11-04-velas": {
-   "estado": "por_aprovar",
+   "estado": "aprovado",
    "versao": 1,
-   "enviado_para_aprovacao": 8
+   "enviado_para_aprovacao": 8,
+   "atualizado": "2026-10-31T17:51 (aprovado pelo Cristiano; registado pelo Claude)"
   },
   "2026-11-05-ups": {
-   "estado": "por_aprovar",
+   "estado": "aprovado",
    "versao": 1,
-   "enviado_para_aprovacao": 9
+   "enviado_para_aprovacao": 9,
+   "atualizado": "2026-10-31T17:51 (aprovado pelo Cristiano; registado pelo Claude)"
   },
   "2026-11-06-vinhos": {
-   "estado": "por_aprovar",
+   "estado": "aprovado",
    "versao": 1,
-   "enviado_para_aprovacao": 10
+   "enviado_para_aprovacao": 10,
+   "atualizado": "2026-10-31T17:51 (aprovado pelo Cristiano; registado pelo Claude)"
   },
   "2026-11-07-tinteiros": {
-   "estado": "por_aprovar",
+   "estado": "aprovado",
    "versao": 1,
-   "enviado_para_aprovacao": 11
+   "enviado_para_aprovacao": 11,
+   "atualizado": "2026-10-31T17:51 (aprovado pelo Cristiano; registado pelo Claude)"
   },
   "2026-11-08-boas-vindas-5": {
-   "estado": "por_aprovar",
+   "estado": "aprovado",
    "versao": 1,
-   "enviado_para_aprovacao": 12
+   "enviado_para_aprovacao": 12,
+   "atualizado": "2026-10-31T17:51 (aprovado pelo Cristiano; registado pelo Claude)"
   }
  }
 }
