@@ -1,5 +1,41 @@
 {
- "chat_id": null,
- "offset": 0,
- "posts": {}
+ "chat_id": 9178633178,
+ "offset": 160493720,
+ "posts": {
+  "2026-11-02-impressora-brother": {
+   "estado": "por_aprovar",
+   "versao": 1,
+   "enviado_para_aprovacao": 6
+  },
+  "2026-11-03-embaixadores": {
+   "estado": "por_aprovar",
+   "versao": 1,
+   "enviado_para_aprovacao": 7
+  },
+  "2026-11-04-velas": {
+   "estado": "por_aprovar",
+   "versao": 1,
+   "enviado_para_aprovacao": 8
+  },
+  "2026-11-05-ups": {
+   "estado": "por_aprovar",
+   "versao": 1,
+   "enviado_para_aprovacao": 9
+  },
+  "2026-11-06-vinhos": {
+   "estado": "por_aprovar",
+   "versao": 1,
+   "enviado_para_aprovacao": 10
+  },
+  "2026-11-07-tinteiros": {
+   "estado": "por_aprovar",
+   "versao": 1,
+   "enviado_para_aprovacao": 11
+  },
+  "2026-11-08-boas-vindas-5": {
+   "estado": "por_aprovar",
+   "versao": 1,
+   "enviado_para_aprovacao": 12
+  }
+ }
 }
