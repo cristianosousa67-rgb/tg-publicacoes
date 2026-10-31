@@ -224,6 +224,9 @@ def partilhas(e, posts):
 
 
 def main():
+    if not os.environ.get("TELEGRAM_TOKEN"):
+        print("Falta o segredo TELEGRAM_TOKEN: nada a fazer.")
+        return
     e = carregar()
     posts = ler_posts()
     respostas(e, posts)
