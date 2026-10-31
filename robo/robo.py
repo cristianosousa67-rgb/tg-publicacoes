@@ -99,6 +99,7 @@ def texto_rede(p, rede):
 
 def respostas(e, posts):
     r = http(TG + "getUpdates?" + urllib.parse.urlencode({"offset": e["offset"], "timeout": 0}))
+    print("Telegram: mensagens novas =", len(r.get("result", [])), "| ligado a um chat:", bool(e["chat_id"]))
     for u in r.get("result", []):
         e["offset"] = u["update_id"] + 1
         msg = u.get("message")
@@ -229,6 +230,7 @@ def main():
         return
     e = carregar()
     posts = ler_posts()
+    print("Bot:", http(TG + "getMe").get("result", {}).get("username"), "| posts:", len(posts))
     respostas(e, posts)
     if e["chat_id"]:
         enviar_novos(e, posts)
