@@ -25,7 +25,7 @@ function prop(k) { return PropertiesService.getScriptProperties().getProperty(k)
 
 function tg(metodo, dados) {
   var payload = {};
-  for (var k in dados) payload[k] = (typeof dados[k] === 'object') ? JSON.stringify(dados[k]) : dados[k];
+  for (var k in dados) payload[k] = (typeof dados[k] === 'object') ? JSON.stringify(dados[k]) : String(dados[k]);
   var r = UrlFetchApp.fetch('https://api.telegram.org/bot' + prop('TELEGRAM_TOKEN') + '/' + metodo,
     { method: 'post', payload: payload, muteHttpExceptions: true });
   var j = JSON.parse(r.getContentText());
@@ -35,7 +35,7 @@ function tg(metodo, dados) {
 
 function graph(caminho, dados, metodo) {
   var opt = { muteHttpExceptions: true, method: metodo || (dados ? 'post' : 'get') };
-  if (dados) opt.payload = dados;
+  if (dados) { opt.payload = {}; for (var k in dados) opt.payload[k] = String(dados[k]); }
   var r = UrlFetchApp.fetch(GRAPH + caminho, opt);
   var j = JSON.parse(r.getContentText());
   if (j.error) throw new Error('Meta: ' + j.error.message);
