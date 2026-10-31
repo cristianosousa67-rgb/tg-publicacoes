@@ -1,3 +1,4 @@
+# DESATIVADO a 31 out 2026: o robô passou para o Google Apps Script (apps-script/Code.gs).
 """TG Publicações · robô que corre no GitHub Actions.
 
 O que faz em cada volta (a cada 10 minutos):
