@@ -17,6 +17,7 @@ var GRAPH = 'https://graph.facebook.com/v26.0/';
 var ESTADO_NOME = 'TG Publicações · estado.json';
 var ATRASO_PARTILHA_MIN = 10;
 var JANELA_MAX_H = 6;
+var LINKEDIN_PAGINA = 'https://www.linkedin.com/company/todos-ganham/admin/page-posts/published/';
 var NOMES = { todosganham: 'TodosGanham' };
 var SEED = {"offset": 160493729, "chat_id": 9178633178, "posts": {"2026-11-02-impressora-brother": {"estado": "aprovado", "versao": 1, "msg": 6}, "2026-11-03-embaixadores": {"estado": "aprovado", "versao": 1, "msg": 7}, "2026-11-04-velas": {"estado": "aprovado", "versao": 1, "msg": 8}, "2026-11-05-ups": {"estado": "aprovado", "versao": 1, "msg": 9}, "2026-11-06-vinhos": {"estado": "aprovado", "versao": 1, "msg": 10}, "2026-11-07-tinteiros": {"estado": "aprovado", "versao": 1, "msg": 11}, "2026-11-08-boas-vindas-5": {"estado": "aprovado", "versao": 1, "msg": 12}}};
 
@@ -212,9 +213,13 @@ function partilhas(e, posts, agora) {
       if (/Facebook/.test(k)) botoes.push([{ text: '📘 Partilhar no meu Facebook', url: 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url) }]);
       else if (url) botoes.push([{ text: '📸 Abrir no Instagram para republicar', url: url }]);
     });
+    botoes.push([{ text: '💼 Publicar na página LinkedIn', url: LINKEDIN_PAGINA }]);
+    botoes.push([{ text: '💼 Partilhar no meu LinkedIn', url: 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent('https://todosganham.pt') }]);
     tg('sendMessage', { chat_id: e.chat_id,
-      text: '🔁 Hora de partilhar no seu perfil: «' + ((posts[pid] || {}).titulo || pid) + '»\nNo Facebook escolha «Público». No Instagram toque em 🔁.',
+      text: '🔁 Hora de partilhar no seu perfil: «' + ((posts[pid] || {}).titulo || pid) + '»\nNo Facebook escolha «Público». No Instagram toque em 🔁.\nLinkedIn: guarde a imagem do post (mensagem de aprovação), copie o texto da mensagem seguinte e cole na página.',
       reply_markup: { inline_keyboard: botoes } });
+    var p = posts[pid];
+    if (p) tg('sendMessage', { chat_id: e.chat_id, text: (p.texto_li || p.texto_fb).trim(), disable_web_page_preview: true });
     st.partilha_enviada = new Date().toISOString();
   });
 }
