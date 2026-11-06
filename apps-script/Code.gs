@@ -17,6 +17,7 @@ var GRAPH = 'https://graph.facebook.com/v26.0/';
 var ESTADO_NOME = 'TG Publicações · estado.json';
 var ATRASO_PARTILHA_MIN = 10;
 var JANELA_MAX_H = 6;
+var IG_COLABORADORES = ['cristianoapsousa'];  // convite de colaboração no Instagram (o Cristiano aceita na app)
 var LINKEDIN_PAGINA = 'https://www.linkedin.com/company/todos-ganham/admin/page-posts/published/';
 var NOMES = { todosganham: 'TodosGanham' };
 var SEED = {"offset": 160493729, "chat_id": 9178633178, "posts": {"2026-11-02-impressora-brother": {"estado": "aprovado", "versao": 1, "msg": 6}, "2026-11-03-embaixadores": {"estado": "aprovado", "versao": 1, "msg": 7}, "2026-11-04-velas": {"estado": "aprovado", "versao": 1, "msg": 8}, "2026-11-05-ups": {"estado": "aprovado", "versao": 1, "msg": 9}, "2026-11-06-vinhos": {"estado": "aprovado", "versao": 1, "msg": 10}, "2026-11-07-tinteiros": {"estado": "aprovado", "versao": 1, "msg": 11}, "2026-11-08-boas-vindas-5": {"estado": "aprovado", "versao": 1, "msg": 12}}};
@@ -182,7 +183,15 @@ function publicarSeFor(p, e, agora) {
       links[nome + ' · Facebook'] = 'https://www.facebook.com/' + (r.post_id || r.id);
       var ig = pag.instagram_business_account && pag.instagram_business_account.id;
       if (ig) {
-        var c = graph(ig + '/media', { image_url: img, caption: p.texto_ig, access_token: token });
+        var dadosIg = { image_url: img, caption: p.texto_ig, access_token: token };
+        if (IG_COLABORADORES.length) dadosIg.collaborators = JSON.stringify(IG_COLABORADORES);
+        var c;
+        try { c = graph(ig + '/media', dadosIg); }
+        catch (errColab) {  // se o convite falhar, publica na mesma sem colaboração
+          if (!dadosIg.collaborators) throw errColab;
+          delete dadosIg.collaborators; erros.push('Instagram: convite de colaboração falhou (' + errColab.message + ')');
+          c = graph(ig + '/media', dadosIg);
+        }
         for (var i = 0; i < 10; i++) {
           var s = graph(c.id + '?fields=status_code&access_token=' + encodeURIComponent(token));
           if (s.status_code === 'FINISHED') break;
